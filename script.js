@@ -77,7 +77,7 @@ function game() {
     let computerScore = 0;
     let playerScore = 0;
     let draw = 0;
-    for (i = 1; i < 5; i++) {
+    for (i = 1; i <= 5; i++) {
         roundWinner = playRound(getComputerChoice, getPlayerChoice);
         switch (roundWinner) {
             case 'DRAW':
@@ -90,7 +90,8 @@ function game() {
                 computerScore += 1;
                 break;
             default:
-                console.log('wrong?');
+                draw += 1;
+                console.log('Wrong player input');
         }
     }
     let winnerIs = getGameWinner(computerScore, playerScore, draw);
