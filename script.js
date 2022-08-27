@@ -1,3 +1,6 @@
+const WINNER = document.querySelector('#winner');
+
+
 function getComputerChoice() {
     let rng = Math.floor(Math.random() * 3) + 1;
     let computerChoice;
@@ -70,7 +73,17 @@ function playRound(getComputerChoice, getPlayerChoice) {
     }
 }
 
-
+function getGameWinner(computerScore, playerScore, draw) {
+    if (draw >= 3) {
+        return `You had ${draw} draws, there is no winner`;
+    } else {
+        if (computerScore > playerScore) {
+            return `Computer score is ${computerScore}/5. The computer won.`;
+        } else if (computerScore < playerScore) {
+            return `Your score is ${playerScore}/5. You won.`;
+        }
+    }
+}
 
 function game() {
     let roundWinner;
@@ -101,16 +114,6 @@ function game() {
     return winnerIs;
 }
 
-function getGameWinner(computerScore, playerScore, draw) {
-    if (draw >= 3) {
-        return `You had ${draw} draws, there is no winner`;
-    } else {
-        if (computerScore > playerScore) {
-            return `Computer score is ${computerScore}/5. The computer won.`;
-        } else if (computerScore < playerScore) {
-            return `Your score is ${playerScore}/5. You won.`;
-        }
-    }
-}
 
-console.log(game());
+
+WINNER.textContent = game();
